@@ -1,0 +1,13 @@
+React 是用于构建界面的 JavaScript 库。
+Vue 提供基于响应式和组件化的开发方式。
+Node.js 是基于 V8 的 JavaScript 运行时。
+Express 是一个基于 Node.js 的 Web 应用框架。
+Nest.js 是一个用于构建高效、可扩展的 Node.js 服务器端应用程序的渐进式框架。
+TypeScript 是 JavaScript 的一个超集，它添加了类型系统和其他特性。
+Webpack 是一个用于现代 JavaScript 应用程序的静态模块打包器。
+Babel 是一个 JavaScript 编译器，它可以将 ES6+ 代码转换为向后兼容的 JavaScript 代码。
+PostgreSQL 是一个功能强大的开源对象关系数据库系统。
+MongoDB 是一个跨平台的、面向文档的 NoSQL 数据库系统。
+MySQL 是一个关系型数据库管理系统。
+
+菠萝手机是为了本次测试胡乱编造的手机品牌，它在现实中并不存在。
