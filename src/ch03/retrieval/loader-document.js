@@ -3,8 +3,6 @@ import { HuggingFaceTransformersEmbeddings } from '@langchain/community/embeddin
 import { MemoryVectorStore } from '@langchain/classic/vectorstores/memory'
 import { ChatPromptTemplate } from '@langchain/core/prompts'
 import { createStuffDocumentsChain } from '@langchain/classic/chains/combine_documents'
-import { StringOutputParser } from '@langchain/core/output_parsers'
-import { RunnableSequence } from '@langchain/core/runnables'
 import { ChatDeepSeek } from '@langchain/deepseek'
 
 import { createRetrievalChain } from '@langchain/classic/chains/retrieval'
@@ -34,6 +32,23 @@ const prompt = ChatPromptTemplate.fromMessages([
   ['human', '问题：{input}\n上下文：\n{context}']
 ])
 
+/**
+本地 txt
+   ↓
+TextLoader
+   ↓
+Splitter
+   ↓
+Embedding
+   ↓
+VectorStore
+   ↓
+Retriever
+   ↓
+LLM
+   ↓
+Answer
+ */
 // 加载本地文档
 const loder = new TextLoader("./src/ch03/retrieval/info.txt");
 const docs = await loder.load();
@@ -53,7 +68,7 @@ const splitterDocs = await splitter.splitDocuments(docs);
 // 创建向量存储
 const vectorStore = await MemoryVectorStore.fromDocuments(splitterDocs, embeddings);
 
-// 进行检索
+//  检索器
 const retriever = vectorStore.asRetriever({
   k: 2,
 });

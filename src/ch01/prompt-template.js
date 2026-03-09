@@ -33,7 +33,7 @@ const outputParse = new StringOutputParser();
 // 构建处理链
 const chain = prompt.pipe(model).pipe(outputParse);
 
-async function promptTemplateExanple(){
+async function promptTemplateExample(){
     try{
         // 接收响应
         const response = await chain.invoke({
@@ -47,4 +47,4 @@ async function promptTemplateExanple(){
     }
 }
 
-promptTemplateExanple();
+promptTemplateExample();
