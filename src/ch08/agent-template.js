@@ -1,5 +1,6 @@
 import { ChatDeepSeek } from '@langchain/deepseek'
 import { createAgent } from 'langchain'
+import { ChatPromptTemplate } from '@langchain/core/prompts'
 import 'dotenv/config'
 
 const model = new ChatDeepSeek({
@@ -8,16 +9,21 @@ const model = new ChatDeepSeek({
   temperature: 0.7,
 })
 
+const prompt = ChatPromptTemplate.fromMessages([
+  ['system', '你现在是一个天气预报助手'],
+  ['human', '{input}']
+])
 
+const messages = await prompt.formatMessages({
+  input: '今天武汉天气怎么样？'
+})
 const agent = createAgent({
   model,
   tools: [],
 })
 
 const response = await agent.invoke({
-  messages:[
-    {role:'human', content: '今天武汉天气怎么样？'},
-  ]
+  messages
 })
 
 console.log(response) // { text: '今天武汉天气怎么样？' }
